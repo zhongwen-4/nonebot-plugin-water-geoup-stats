@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
 # C extensions
 *.so
 
@@ -81,6 +82,7 @@ target/
 # IPython
 profile_default/
 ipython_config.py
+pdm.lock
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -153,6 +155,9 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# tests
+.tests/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
