@@ -12,7 +12,7 @@ __plugin_meta__ = PluginMetadata(
     统计群聊发言情况
     """,
     type="application",
-    homepage="",
+    homepage="https://github.com/zhongwen-4/nonebot-plugin-water-geoup-stats",
     supported_adapters={"~onebot.v11"},
 )
 
