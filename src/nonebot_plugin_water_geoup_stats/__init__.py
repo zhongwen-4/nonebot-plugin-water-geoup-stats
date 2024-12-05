@@ -110,6 +110,7 @@ async def _(event: GroupMessageEvent):
             zhanbi = sum(msg_zhanbi)
             percentages = [(number / zhanbi) for number in msg_zhanbi]
             user_data = [[i[0], i[1]] for i in msg_count]
+            user_index = [i[1] for i in user_data]
         
         msg = []
         msg.append(f"本群今日发言统计:")
@@ -124,7 +125,11 @@ async def _(event: GroupMessageEvent):
 
             if msg_count != None:
                 msg.append(f"{user_data[i][1]} 共发言 {user_data[i][0]} 条，占比 {percentage:.2%}")
+
         
+        user_index = user_index.index(event.user_id)
+        if user_index > 10:
+            msg.append(f"-------------------\n你在本群发言排名为: {user_index}")
         await get_day_stats.finish("\n".join(msg))
 
 
@@ -142,6 +147,7 @@ async def _(event: GroupMessageEvent):
             zhanbi = sum(msg_zhanbi)
             percentages = [(number / zhanbi) for number in msg_zhanbi]
             user_data = [[i[0], i[1]] for i in msg_count]
+            user_index = [i[1] for i in user_data]
         
         msg = []
         msg.append(f"本群本月发言统计:")
@@ -151,10 +157,14 @@ async def _(event: GroupMessageEvent):
             if user_data[i][0] == 0:
                 continue
 
-            if msg_count != None:
-                msg.append(f"{user_data[i][1]} 共发言 {user_data[i][0]} 条，占比 {percentage:.2%}")
-
             if len(msg) >= 10:
                 break
 
+            if msg_count != None:
+                msg.append(f"{user_data[i][1]} 共发言 {user_data[i][0]} 条，占比 {percentage:.2%}")
+
+
+        user_index = user_index.index(event.user_id)
+        if user_index > 10:
+            msg.append(f"-------------------\n你在本群发言排名为: {user_index}\n")
         await get_month_stats.finish("\n".join(msg))
